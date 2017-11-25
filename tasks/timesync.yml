@@ -1,0 +1,3 @@
+---
+- name: NTP force Sync
+  shell: ntpdate -bu {{ntp_servers[0]}}

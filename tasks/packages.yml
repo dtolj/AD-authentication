@@ -1,0 +1,14 @@
+---
+- name: Install packages for AD authentication
+  yum: state=latest name={{item}}
+  with_items:
+    - sssd
+    - sssd-ldap
+    - sssd-ad
+    - samba-common
+    - oddjob
+    - oddjob-mkhomedir
+    - adcli
+    - krb5-workstation
+    - authconfig
+    - ntpdate

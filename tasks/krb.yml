@@ -1,0 +1,3 @@
+---
+- name: Templating krb5.conf
+  template: src=krb5.conf.j2 dest=/etc/krb5.conf

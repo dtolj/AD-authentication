@@ -1,0 +1,9 @@
+---
+smb:
+  'workgroup': "{{workgroup|upper}}"
+  'client signing': yes
+  'client use spnego': yes
+  'kerberos method': 'secrets and keytab'
+  'password server': "{{adserver}}"
+  'realm': "{{domain}}"
+  'security': ads

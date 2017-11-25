@@ -1,0 +1,13 @@
+---
+- name: enable and restart sssd
+  service: name=sssd state=restarted enabled=yes
+- name: enable and restart messagebus
+  service: name=messagebus state=restarted enabled=yes
+- name: enable and restart oddjobd  
+  service: name=oddjobd state=restarted enabled=yes
+- name: enable and restart rsyslog
+  service: name=rsyslog state=restarted enabled=yes
+- name: enable and restart ntpd
+  service: name=ntpd state=restarted enabled=yes
+- name: enable and restart chronyd
+  service: name=chronyd state=restarted enabled=yes  

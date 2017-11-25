@@ -1,0 +1,4 @@
+- name: restart systemd-logind after dbus
+  service: name=systemd-logind state=restarted
+
+

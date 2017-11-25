@@ -1,0 +1,6 @@
+---
+- name: Install additional tools (RHEL7)
+  yum: state=latest name=samba-common-tools
+
+- name: Install realmd(RHEL7)
+  yum: state=present name=realmd

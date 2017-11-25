@@ -1,0 +1,7 @@
+---
+- name: Install chrony(RHEL7)
+  yum: state=present name=chrony
+      
+- name: Template Chrony (RHEL7)
+  template: src=chrony.conf.j2 dest=/etc/chrony.conf
+  notify: enable and restart chronyd

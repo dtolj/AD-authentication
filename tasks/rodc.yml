@@ -1,0 +1,2 @@
+---
+- debug: msg="Make sure that you have copied the keytab file from AD."

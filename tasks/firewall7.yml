@@ -1,0 +1,4 @@
+---  
+- name: Diable Firewall RHEL7
+  service: name=firewalld state=stopped enabled=no
+

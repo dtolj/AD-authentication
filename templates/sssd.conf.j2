@@ -1,0 +1,43 @@
+[sssd]
+domains = {{domain}} 
+config_file_version = 2
+services = nss,pam,pac,sudo
+debug_level = 1
+
+[domain/{{domain}}]
+ad_server = {{adserver}}
+ad_domain = {{domain}}
+krb5_realm = {{domain|upper}}
+realmd_tags = manages-system joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+override_homedir=/home/%u
+ldap_id_mapping = True
+use_fully_qualified_names = False
+access_provider = ad
+
+
+#ad_gpo_access_control = enforcing
+
+debug_level = 1
+
+
+
+# https://fedorahosted.org/sssd/ticket/2256
+sudo_provider = ad
+ldap_uri = ldap://{{adserver}}
+ldap_sudo_search_base = {{sudo_ou}}
+
+
+
+
+[nss]
+fallback_homedir = /home/%u@%d
+
+[pam]
+
+[pac]
+
+[sudo]

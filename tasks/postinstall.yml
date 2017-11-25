@@ -1,0 +1,22 @@
+---
+# enablepamaccess enables security access.conf with sssd
+- name: Populating nsswitch and PAM stack 
+  shell: authconfig --enablesssd --enablesssdauth --enablemkhomedir --enablelocauthorize --enablepamaccess --update
+
+- name: Templating sssd.conf and restart services
+  template: src=sssd.conf.j2 dest=/etc/sssd/sssd.conf mode=0600
+  notify: 
+    - enable and restart sssd
+    - enable and restart messagebus
+    - enable and restart oddjobd
+
+- name: Ensure SUDOers is setup
+  lineinfile: dest=/etc/nsswitch.conf state=present regexp="^(sudoers)?" line="sudoers{{':'}} files sss" backup=yes
+
+- name: Add Login access control
+  template: src=access.conf.j2 dest=/etc/security/access.conf mode=0644  
+  tags: security
+ 
+
+
+

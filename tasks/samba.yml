@@ -1,0 +1,4 @@
+---
+- name: Configure Samba (RHEL6)
+  ini_file: dest=/etc/samba/smb.conf section=global option={{'\t'}}{{item.key}} value={{item.value}} backup=yes
+  with_dict: "{{smb}}"

@@ -1,0 +1,3 @@
+---
+- name: Joining to AD (RHEL6)
+  shell: echo -n {{psw}} | adcli join -S {{adserver}} -v -U {{aduser}} --stdin-password -O "{{domain_ou}}"

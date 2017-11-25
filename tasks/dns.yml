@@ -1,0 +1,10 @@
+---  
+- name: Get Distribution
+  debug: msg="{{ansible_distribution}} {{ansible_distribution_release}} {{ansible_distribution_version}}"
+
+- name: modify DNS in resolve.conf (will not survive reboot) !!selinux
+  template: src=dns.j2 dest=/etc/resolv.conf
+
+- name: setup DNS  !!selinux
+  lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-{{ansible_default_ipv4.interface}} regexp=^DNS{{item.0+1}} line=DNS{{item.0+1}}={{item.1}} backup=yes
+  with_indexed_items: "{{dns_servers}}"

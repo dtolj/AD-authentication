@@ -1,0 +1,7 @@
+---
+- name: Install ntp(RHEL6)
+  yum: state=present name=ntp
+  
+- name: Templating ntp.conf
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: enable and restart ntpd
